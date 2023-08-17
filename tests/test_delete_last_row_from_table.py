@@ -1,18 +1,19 @@
-from data import SQL_request
+from enums.data import SQL_request
 from page_objects.main import BasePage
-from conftest import start
 
 
 def test_delete_last_row_from_table(start):
     base_page = BasePage(start)
-
     # подсчет первоначального количества строк
     before_rows_counter = base_page.rows_counter()
     base_page.waiting_table()
+
     # Вводим sql запрос в поле ввода
     base_page.entry_sql_query(SQL_request.FIFTH_CASE.value)
+
     # Повторно считаем строки
     after_rows_counter = base_page.rows_counter()
+
     # Ожидаем, что таблица загрузится
     base_page.waiting_table()
 
