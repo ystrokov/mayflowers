@@ -7,3 +7,4 @@ class Main_Selectors(Enum):
     ADRESS_TABLE = '//*[@id="divResultSQL"]//tbody/tr[2]/td[4]'
     TABLE = '//*[@id="divResultSQL"]//tbody/tr'
     TABLE_COUNT = '//*[@id="divResultSQL"]//tbody/tr[2]/td'
+    POLICY_POPUP_ACCEPT_BUTTON = 'accept-choices'
