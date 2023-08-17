@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import config
+from page_objects.selectors import Main_Selectors
 
 
 @pytest.fixture
@@ -17,9 +18,9 @@ def start():
     driver.get(config.DRIVER_URL)
     try:
         WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "accept-choices"))
+            EC.presence_of_element_located((By.ID, Main_Selectors.POLICY_POPUP_ACCEPT_BUTTON.value))
         )
-        driver.find_element(By.ID, "accept-choices").click()
+        driver.find_element(By.ID, Main_Selectors.POLICY_POPUP_ACCEPT_BUTTON.value).click()
     except AssertionError as e:
         print("Ошибка:", e)
 
