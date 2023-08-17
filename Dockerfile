@@ -2,13 +2,15 @@
 FROM joyzoursky/python-chromedriver:3.8
 
 # Создайте рабочую директорию
-WORKDIR /app
+# Создайте рабочую директорию
+WORKDIR /mayflowers
 
-# Копируйте исходные файлы проекта
-COPY . /app
+# Установите git и копируйте исходные файлы проекта
+RUN apt-get update && apt-get install -y git && \
+    git clone https://github.com/ystrokov/mayflowers.git . && \
+    ls
 
-# Установите зависимости Python
-COPY requirements.txt /app/
+# Установите зависимости из requirements.txt
 RUN pip3 install -r requirements.txt
 
 # Запустите тесты

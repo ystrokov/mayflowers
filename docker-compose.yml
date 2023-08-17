@@ -16,14 +16,12 @@ services:
     container_name: selenium
 
   testrunner:
-    build: ./Dockerfile
-    volumes:
-      - ./app:/app
+    build: ./
     networks:
       - selenium-network
     depends_on:
       - selenium
-    command: ["bash", "-c", "sleep 10 && docker run --rm -it --network container:selenium testrunner"]
+    command: ["bash", "-c", "pytest"]
 
 networks:
   selenium-network:
